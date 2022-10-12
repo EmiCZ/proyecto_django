@@ -8,10 +8,22 @@
 </head>
 <body>
     
-    Gracias por comprarme FLAN!!!!!
+    Gracias por comprarme FLAN!!!!! Te quiero {{nombre}} {{apellido}}
     <br>
     <img alt="Beso" src="https://img.freepik.com/vector-gratis/amantes-pareja-besandose-feliz-san-valentin-ilustracion-personaje-dibujos-animados_56104-392.jpg"
          width=626" height="500">
+
+    <br>
+    {% for nota in notas %}
+        {% if nota > 5 %}    
+            <p style="color:blue">{{nota}}</p>
+        {% else %}
+            <p style="color:red">{{nota}}</p>
+        {% endif %}
+        <br>
+    {% endfor %}
+
+
 
 </body>
 </html>
