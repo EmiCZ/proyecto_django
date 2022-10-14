@@ -18,7 +18,7 @@ from django.urls import path
 from AppCoder.views import saludo
 from AppCoder.views import saludo_dos
 from AppCoder.views import saludar_a
-from AppCoder.views import mostrar_mi_template, template_con_variables, template_con_listas
+from AppCoder.views import mostrar_mi_template, template_con_variables, template_con_listas, mostrar_familiares
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,4 +28,5 @@ urlpatterns = [
     path("template", mostrar_mi_template),
     path("template2/<nombre>/<apellido>", template_con_variables),
     path("template3", template_con_listas),
+    path("familiares", mostrar_familiares),
 ]
