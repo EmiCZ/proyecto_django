@@ -7,7 +7,7 @@
       <form action="/familiares/buscar" method="post"> <!--action es la url a donde va a viajar cuando se envia la informacion del formulario, tiene que ser la misma url que tengo definida para la clase en urls.py-->
         {% csrf_token %}
         {{ form }}
-        <input type="submit" value="Submit"> <!--Puedo indicar el nombre del boton en "value"-->
+        <input type="submit" value="Buscar"> <!--Puedo indicar el nombre del boton en "value"-->
       </form>
 
       {% for familiar in lista_familiares %}

@@ -1,0 +1,19 @@
+{% extends 'AppCoder/base.html' %}
+
+{% block titulo%} Borrar Familiares por nombre {% endblock %}
+
+{% block contenido %}
+      
+      <form action="/familiares/borrar" method="post"> <!--action es la url a donde va a viajar cuando se envia la informacion del formulario, tiene que ser la misma url que tengo definida para la clase en urls.py-->
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Borrar"> <!--Puedo indicar el nombre del boton en "value"-->
+      </form>
+
+      {% for familiar in lista_familiares %}
+      <ul>
+          <li> Nombre: {{familiar.nombre}}, Dirección: {{familiar.direccion}}, Pasaporte: {{familiar.numero_pasaporte}}</li>
+      </ul>
+      {% endfor %}
+
+{% endblock %}
