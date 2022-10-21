@@ -3,9 +3,25 @@
 {% block titulo%} Lista de todos mis Familiares {% endblock %} <!--Este es el titulo H2-->
 
 {% block contenido %}
+
   {% for familiar in lista_familiares %}
       <ul>
-          <li> Nombre: {{familiar.nombre}}, Dirección: {{familiar.direccion}}, Pasaporte: {{familiar.numero_pasaporte}}</li>
+          <li> Nombre: {{familiar.nombre}}, Dirección: {{familiar.direccion}}, Pasaporte: {{familiar.numero_pasaporte}}, Fecha de Nacimiento: {{familiar.fecha_nacimiento}}</li>
       </ul>
   {% endfor %}
+
+  <div class="container">
+    <h2 style="text-align:center;">Botones de Navegacion</h2>
+    <form action="buscar">
+        <button class="btn btn-danger btn-lg">Buscar de Familiares</button>
+    </form>
+    <form action="alta">
+      <button class="btn btn-danger btn-lg">Alta de Familiar</button>
+    </form>
+    <form action="borrar">
+      <button class="btn btn-danger btn-lg">Borrar de Familiar</button>
+    </form>
+  </div>
+  
+
 {% endblock %}

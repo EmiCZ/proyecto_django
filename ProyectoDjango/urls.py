@@ -18,7 +18,7 @@ from django.urls import path
 from AppCoder.views import saludo
 from AppCoder.views import saludo_dos
 from AppCoder.views import saludar_a
-from AppCoder.views import mostrar_mi_template, template_con_variables, template_con_listas, mostrar_familiares, BuscarFamiliar, CrearFamiliar, BorrarFamiliar
+from AppCoder.views import mostrar_mi_template, template_con_variables, template_con_listas, mostrar_familiares, BuscarFamiliar, CrearFamiliar, BorrarFamiliar, AltaFamiliar
 from blog.views import index as blog_index
 
 urlpatterns = [
@@ -33,5 +33,6 @@ urlpatterns = [
     path("blog/", blog_index),
     path("familiares/buscar", BuscarFamiliar.as_view()),
     path("familiares/crear", CrearFamiliar.as_view()),
-    path("familiares/borrar", BorrarFamiliar.as_view())
+    path("familiares/borrar", BorrarFamiliar.as_view()),
+    path("familiares/alta", AltaFamiliar.as_view())
 ]

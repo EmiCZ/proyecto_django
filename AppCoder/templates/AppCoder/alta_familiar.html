@@ -1,0 +1,13 @@
+{% extends 'AppCoder/base.html' %}
+{% block titulo%} Alta de nuevo Familiar {% endblock %}
+{% block contenido %}
+  
+  <form action="/familiares/alta" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Crear">
+  </form>
+
+  <h2 style="color:green">{{msg_exito}}</h2>
+
+{% endblock %}

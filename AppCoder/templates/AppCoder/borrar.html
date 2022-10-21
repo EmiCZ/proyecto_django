@@ -1,6 +1,6 @@
 {% extends 'AppCoder/base.html' %}
 
-{% block titulo%} Borrar Familiares por nombre {% endblock %}
+{% block titulo%} Borrar Familiares por ID {% endblock %}
 
 {% block contenido %}
       
@@ -12,7 +12,7 @@
 
       {% for familiar in lista_familiares %}
       <ul>
-          <li> Nombre: {{familiar.nombre}}, Dirección: {{familiar.direccion}}, Pasaporte: {{familiar.numero_pasaporte}}</li>
+          <li> Nombre: {{familiar.nombre}}, Dirección: {{familiar.direccion}}, Pasaporte: {{familiar.numero_pasaporte}}, Fecha de Nacimiento: {{familiar.fecha_nacimiento}}, Id: {{familiar.id}}</li>
       </ul>
       {% endfor %}
 

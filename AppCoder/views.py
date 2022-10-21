@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from AppCoder.models import Familiar
-from AppCoder.forms import Buscar # <--- Esto es para CLASS BASED VIEWS
+from AppCoder.forms import Buscar, FamiliarForm # <--- Esto es para CLASS BASED VIEWS
 from AppCoder.forms import Crear # <--- Esto es para CLASS BASED VIEWS (Creada por mi)
 from AppCoder.forms import Borrar # <--- Esto es para CLASS BASED VIEWS (Creada por mi)
 from django.views import View # <-- Esto es para CLASS BASED VIEWS
@@ -92,7 +92,8 @@ class BorrarFamiliar(View):
 
     def get(self, request):
         form = self.form_class(initial=self.initial)
-        return render(request, self.template_name, {'form':form}) #Esta variable FORM es la que esta en el codigo del HTML
+        lista_familiares = Familiar.objects.all()
+        return render(request, self.template_name, {'form':form, 'lista_familiares':lista_familiares}) #Esta variable FORM es la que esta en el codigo del HTML
 
     def post(self, request):
         form = self.form_class(request.POST)
@@ -100,8 +101,28 @@ class BorrarFamiliar(View):
             id_form = form.cleaned_data.get("id")
             Familiar(id = id_form).delete()
             lista_familiares = Familiar.objects.all()
-            #form = self.form_class(initial=self.initial)
             return render(request, self.template_name, {'form':form, 
                                                         'lista_familiares':lista_familiares})
 
+        return render(request, self.template_name, {"form": form})
+
+class AltaFamiliar(View):
+
+    form_class = FamiliarForm
+    template_name = 'AppCoder/alta_familiar.html'
+    initial = {"nombre":"", "direccion":"", "numero_pasaporte":"", "fecha_nacimiento":""}
+
+    def get(self, request):
+        form = self.form_class(initial=self.initial)
+        return render(request, self.template_name, {'form':form})
+
+    def post(self, request):
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            form.save()
+            msg_exito = f"se cargo con éxito el familiar {form.cleaned_data.get('nombre')}"
+            form = self.form_class(initial=self.initial)
+            return render(request, self.template_name, {'form':form, 
+                                                        'msg_exito': msg_exito})
+        
         return render(request, self.template_name, {"form": form})
