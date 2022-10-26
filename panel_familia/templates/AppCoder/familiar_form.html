@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Familiar</title>
+</head>
+<body>
+
+<!--Esto es distinto a los que figura en alta_familiar.html-->
+<!--El archivo HTML para que funcione esto siempre tiene que ser "nombredelmodelo"_form.html-->
+
+    <form method="post"> <!--No es necesario pasarle action-->
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="Agregar">
+    </form>
+
+    <form action="{% url 'familiar-lista' %}">
+        <button class="btn btn-danger btn-lg">Volver</button>
+      </form>
+
+</body>
+</html>

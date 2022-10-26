@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Borrar Familiar</title>
+</head>
+<body>
+
+<!--El archivo HTML para que funcione esto siempre tiene que ser "nombredelmodelo"_confirm_delete.html-->
+
+    <form method="post">
+        {% csrf_token %}
+        "¿ Estás seguro de borrar el familiar {{ object }} ?"
+        <input type="submit" value="SI">
+    </form>
+    
+    <form action="{% url 'familiar-lista' %}">
+        <button class="btn btn-danger btn-lg">Volver</button>
+      </form>
+
+</body>
+</html>

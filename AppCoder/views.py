@@ -6,6 +6,7 @@ from AppCoder.forms import Crear # <--- Esto es para CLASS BASED VIEWS (Creada p
 from AppCoder.forms import Borrar # <--- Esto es para CLASS BASED VIEWS (Creada por mi)
 from django.views import View # <-- Esto es para CLASS BASED VIEWS
 
+
 # Create your views here.
 
 def saludo(request): #consulta o petición
@@ -34,7 +35,7 @@ def template_con_listas(request):
     {"notas": [1,2,3,4,5,6,7,8]}
     )
 
-def mostrar_familiares(request):
+def mostrar_familiares(request): #esto es una function based view
     lista_familiares = Familiar.objects.all()
     return render(request, "AppCoder/familiares.html", 
                 {"lista_familiares" : lista_familiares}) #este diccionario se llama "contexto"
@@ -126,3 +127,4 @@ class AltaFamiliar(View):
                                                         'msg_exito': msg_exito})
         
         return render(request, self.template_name, {"form": form})
+

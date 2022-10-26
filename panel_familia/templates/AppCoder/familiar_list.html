@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Familiares</title>
+</head>
+<body>
+<ul>
+
+<!--Esto es distinto a los que figura en familiares.html porque yo no hago el FOR con detallando los campos para enumerar los items de la lista-->
+<!--El archivo HTML para que funcione esto siempre tiene que ser "nombredelmodelo"_list.html-->
+
+{% block buscar %} {% endblock %}
+
+<h1>Lista de Familiares</h1>
+
+{% for familiar in object_list %}
+    <li>{{familiar}}
+        <a href="{% url 'familiar-actualizar' familiar.id %}">Actualizar</a> <!--al declarar el nombre asi, puedo modificar el nombre de la url de url.py y modifico todo-->
+        <a href="{% url 'familiar-borrar' familiar.id %}">Borrar</a> <!--al declarar el nombre asi, puedo modificar el nombre de la url de url.py y modifico todo-->
+    </li>
+{% endfor %}
+
+</ul>
+
+<div class="container">
+    <h2 style="text-align:left;">Botones de Navegacion</h2>
+    <form action="{% url 'familiar-crear' %}">
+        <button class="btn btn-danger btn-lg">Crear Familiar</button>
+    </form>
+
+</body>
+</html>

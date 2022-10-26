@@ -14,11 +14,13 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include #Esto se usa para rutear a otro url.py
+from AppCoder.forms import FamiliarForm
 from AppCoder.views import saludo
 from AppCoder.views import saludo_dos
 from AppCoder.views import saludar_a
-from AppCoder.views import mostrar_mi_template, template_con_variables, template_con_listas, mostrar_familiares, BuscarFamiliar, CrearFamiliar, BorrarFamiliar, AltaFamiliar
+from AppCoder.views import (mostrar_mi_template, template_con_variables, template_con_listas, mostrar_familiares, BuscarFamiliar, CrearFamiliar,
+                             BorrarFamiliar, AltaFamiliar)
 from blog.views import index as blog_index
 
 urlpatterns = [
@@ -34,5 +36,6 @@ urlpatterns = [
     path("familiares/buscar", BuscarFamiliar.as_view()),
     path("familiares/crear", CrearFamiliar.as_view()),
     path("familiares/borrar", BorrarFamiliar.as_view()),
-    path("familiares/alta", AltaFamiliar.as_view())
+    path("familiares/alta", AltaFamiliar.as_view()),
+    path("panel-familia/", include('panel_familia.urls')), #en el include pongo el nombre de la aplicación y le agrego .urls
 ]

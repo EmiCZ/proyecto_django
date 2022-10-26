@@ -9,4 +9,4 @@ class Familiar(models.Model):
     fecha_nacimiento = models.DateField()
 
     def __str__(self):
-        return f"{self.nombre}, {self.numero_pasaporte}, {self.id}"
+        return f"{self.nombre}, {self.direccion} {self.numero_pasaporte}, {self.fecha_nacimiento}, {self.id}"
