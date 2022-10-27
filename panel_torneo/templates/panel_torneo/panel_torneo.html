@@ -1,0 +1,18 @@
+{% extends 'panel_torneo/base.html' %}
+
+{% block contenido %}
+
+
+<div class="container">
+    <h3 style="text-align:left;">Botones de Navegacion Equipos</h3>
+    <form action="{% url 'equipos-crear' %}">
+        <button class="btn btn-danger btn-lg">Crear Equipo</button>
+    </form>
+    <form action="{% url 'equipos-buscar' %}">
+        <button class="btn btn-danger btn-lg">Buscar Equipo</button>
+    </form>
+    <form action="{% url 'equipos-lista' %}">
+        <button class="btn btn-danger btn-lg">Lista Equipo</button>
+    </form>
+
+{% endblock %}

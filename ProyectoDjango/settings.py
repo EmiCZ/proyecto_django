@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'AppCoder.apps.AppcoderConfig',
     'blog.apps.BlogConfig',
-    'panel_familia.apps.PanelFamiliaConfig'
+    'panel_familia.apps.PanelFamiliaConfig',
+    'panel_torneo.apps.PanelTorneoConfig'
 ]
 
 MIDDLEWARE = [

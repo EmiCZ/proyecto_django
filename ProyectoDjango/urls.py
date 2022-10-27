@@ -38,4 +38,5 @@ urlpatterns = [
     path("familiares/borrar", BorrarFamiliar.as_view()),
     path("familiares/alta", AltaFamiliar.as_view()),
     path("panel-familia/", include('panel_familia.urls')), #en el include pongo el nombre de la aplicación y le agrego .urls
+    path("panel-torneo/", include('panel_torneo.urls')),
 ]

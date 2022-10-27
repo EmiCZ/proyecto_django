@@ -1,0 +1,17 @@
+{% extends 'panel_torneo/base.html' %}
+
+{% block titulo%} Borrar Equipo {% endblock %}
+
+{% block contenido %}
+
+    <form method="post">
+        {% csrf_token %}
+        "¿ Estás seguro de borrar el familiar {{ object }} ?"
+        <input type="submit" value="SI">
+    </form>
+    
+    <form action="{% url 'inicio' %}">
+        <button class="btn btn-danger btn-lg">Volver</button>
+      </form>
+
+{% endblock %}

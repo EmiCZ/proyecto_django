@@ -1,0 +1,17 @@
+{% extends 'panel_torneo/base.html' %}
+
+{% block titulo%} Crear / Actualizar Equipos {% endblock %}
+
+{% block contenido %}
+
+    <form method="post"> <!--No es necesario pasarle action-->
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="Agregar">
+    </form>
+
+    <form action="{% url 'inicio' %}">
+        <button class="btn btn-danger btn-lg">Volver</button>
+      </form>
+
+{% endblock %}

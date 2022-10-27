@@ -1,0 +1,23 @@
+{% extends 'panel_torneo/base.html' %}
+
+{% block titulo%} Buscar Equipos por nombre {% endblock %}
+
+{% block contenido %}
+      
+      <form action="buscar_equipos" method="post"> <!--action es la url a donde va a viajar cuando se envia la informacion del formulario, tiene que ser la misma url que tengo definida para la clase en urls.py-->
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Buscar"> <!--Puedo indicar el nombre del boton en "value"-->
+      </form>
+
+      {% for equipo in lista_equipos %}
+      <ul>
+          <li> Nombre: {{equipo.nombre}}, Torneo: {{equipo.torneo}}, Cantidad de Jugadores: {{equipo.cantidad_jugadores}}</li>
+      </ul>
+      {% endfor %}
+
+      <form action="{% url 'inicio' %}">
+        <button class="btn btn-danger btn-lg">Volver</button>
+      </form>
+
+{% endblock %}
