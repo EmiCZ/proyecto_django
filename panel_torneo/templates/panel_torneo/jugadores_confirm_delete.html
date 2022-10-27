@@ -1,12 +1,12 @@
 {% extends 'panel_torneo/base.html' %}
 
-{% block titulo%} Borrar Equipo {% endblock %}
+{% block titulo%} Borrar Jugador {% endblock %}
 
 {% block contenido %}
 
     <form method="post">
         {% csrf_token %}
-        "¿ Estás seguro de borrar el equipo {{ object }} ?"
+        "¿ Estás seguro de borrar el jugador {{ object }} ?"
         <input type="submit" value="SI">
     </form>
     

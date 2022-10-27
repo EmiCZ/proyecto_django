@@ -9,7 +9,7 @@ from panel_torneo.forms import Buscar
 def panel_inicial(request):
     return render(request,"panel_torneo/panel_torneo.html")
 
-#CRUD Usuario
+#CRUD Usuario + Busqueda
 
 class UsuarioLista(ListView):
     model = Usuario
@@ -25,8 +25,29 @@ class UsuarioBorrar(DeleteView):
 
 class UsuarioActualizar(UpdateView):
     model = Usuario
-    success_url = "/panel-familia/lista_usuario"
+    success_url = "/panel-torneo/lista_usuario"
     fields = ["usuario", "password", "correo"]
+
+class UsuarioBuscar(View):
+
+    form_class = Buscar
+    template_name = 'panel_torneo/usuario_buscar.html'
+    initial = {"nombre":""}
+
+    def get(self, request):
+        form = self.form_class(initial=self.initial)
+        return render(request, self.template_name, {'form':form})
+
+    def post(self, request):
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            usuarios = form.cleaned_data.get("nombre")
+            lista_usuarios = Usuario.objects.filter(usuario__icontains=usuarios).all() 
+            form = self.form_class(initial=self.initial)
+            return render(request, self.template_name, {'form':form, 
+                                                        'lista_usuarios':lista_usuarios})
+
+        return render(request, self.template_name, {"form": form})
 
 #CRUD Torneo
 
@@ -38,11 +59,11 @@ class TorneoCrear(CreateView):
     success_url = "/panel-torneo/lista_torneo"
     fields = ["nombre", "cantidad_equipos", "region"]
 
-class FamiliarBorrar(DeleteView):
+class TorneoBorrar(DeleteView):
     model = Torneo
     success_url = "/panel-torneo/lista_torneo"
 
-class FamiliarActualizar(UpdateView):
+class TorneoActualizar(UpdateView):
     model = Torneo
     success_url = "/panel-familia/lista_torneo"
     fields = ["nombre", "cantidad_equipos", "region"]
@@ -112,16 +133,16 @@ class PartidosLista(ListView):
     model = Partidos
 
 class PartidosCrear(CreateView):
-    model = Jugadores
+    model = Partidos
     success_url = "/panel-torneo/lista_partidos"
     fields = ["equipo_local", "goles_local", "equipo_visitante", "goles_visitante"]
 
 class PartidosBorrar(DeleteView):
-    model = Jugadores
+    model = Partidos
     success_url = "/panel-torneo/lista_partidos"
 
 class PartidosActualizar(UpdateView):
-    model = Jugadores
+    model = Partidos
     success_url = "/panel-familia/lista_partidos"
     fields = ["equipo_local", "goles_local", "equipo_visitante", "goles_visitante"]
 

@@ -1,0 +1,24 @@
+{% extends 'panel_torneo/base.html' %}
+
+{% block titulo%} Lista de Usuarios {% endblock %}
+
+{% block contenido %}
+
+{% block buscar %} {% endblock %}
+
+<ul>
+
+{% for usuario in object_list %}
+    <li>{{usuario}}
+        <a href="{% url 'usuario-actualizar' usuario.id %}">Actualizar</a> 
+        <a href="{% url 'usuario-borrar' usuario.id %}">Borrar</a> 
+    </li>
+{% endfor %}
+
+</ul>
+
+<form action="{% url 'inicio' %}">
+    <button class="btn btn-danger btn-lg">Volver</button>
+</form>
+
+{% endblock %}

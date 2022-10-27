@@ -1,15 +1,15 @@
 {% extends 'panel_torneo/base.html' %}
 
-{% block titulo%} Borrar Equipo {% endblock %}
+{% block titulo%} Crear / Actualizar Torneo {% endblock %}
 
 {% block contenido %}
 
-    <form method="post">
+    <form method="post"> <!--No es necesario pasarle action-->
         {% csrf_token %}
-        "¿ Estás seguro de borrar el equipo {{ object }} ?"
-        <input type="submit" value="SI">
+        {{form.as_p}}
+        <input type="submit" value="Agregar">
     </form>
-    
+
     <form action="{% url 'inicio' %}">
         <button class="btn btn-danger btn-lg">Volver</button>
       </form>

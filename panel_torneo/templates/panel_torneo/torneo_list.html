@@ -1,0 +1,24 @@
+{% extends 'panel_torneo/base.html' %}
+
+{% block titulo%} Lista de Torneos {% endblock %}
+
+{% block contenido %}
+
+{% block buscar %} {% endblock %}
+
+<ul>
+
+{% for torneo in object_list %}
+    <li>{{torneo}}
+        <a href="{% url 'torneo-actualizar' torneo.id %}">Actualizar</a> 
+        <a href="{% url 'torneo-borrar' torneo.id %}">Borrar</a> 
+    </li>
+{% endfor %}
+
+</ul>
+
+<form action="{% url 'inicio' %}">
+    <button class="btn btn-danger btn-lg">Volver</button>
+</form>
+
+{% endblock %}

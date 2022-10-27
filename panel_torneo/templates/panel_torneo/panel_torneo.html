@@ -4,6 +4,26 @@
 
 
 <div class="container">
+
+    <h3 style="text-align:left;">Botones de Navegacion Usuarios</h3>
+    <form action="{% url 'usuario-crear' %}">
+        <button class="btn btn-danger btn-lg">Crear Usuario</button>
+    </form>
+    <form action="{% url 'usuario-buscar' %}">
+        <button class="btn btn-danger btn-lg">Buscar Usuario</button>
+    </form>
+    <form action="{% url 'usuario-lista' %}">
+        <button class="btn btn-danger btn-lg">Lista Usuario</button>
+    </form>
+
+    <h3 style="text-align:left;">Botones de Navegacion Torneos</h3>
+    <form action="{% url 'torneo-crear' %}">
+        <button class="btn btn-danger btn-lg">Crear Torneo</button>
+    </form>
+    <form action="{% url 'torneo-lista' %}">
+        <button class="btn btn-danger btn-lg">Lista Torneo</button>
+    </form>
+
     <h3 style="text-align:left;">Botones de Navegacion Equipos</h3>
     <form action="{% url 'equipos-crear' %}">
         <button class="btn btn-danger btn-lg">Crear Equipo</button>
@@ -13,6 +33,22 @@
     </form>
     <form action="{% url 'equipos-lista' %}">
         <button class="btn btn-danger btn-lg">Lista Equipo</button>
+    </form>
+
+    <h3 style="text-align:left;">Botones de Navegacion Partidos</h3>
+    <form action="{% url 'partidos-crear' %}">
+        <button class="btn btn-danger btn-lg">Crear Partidos</button>
+    </form>
+    <form action="{% url 'partidos-lista' %}">
+        <button class="btn btn-danger btn-lg">Lista Partidos</button>
+    </form>
+
+    <h3 style="text-align:left;">Botones de Navegacion Jugadores</h3>
+    <form action="{% url 'jugadores-crear' %}">
+        <button class="btn btn-danger btn-lg">Crear Jugadores</button>
+    </form>
+    <form action="{% url 'jugadores-lista' %}">
+        <button class="btn btn-danger btn-lg">Lista Jugadores</button>
     </form>
 
 {% endblock %}

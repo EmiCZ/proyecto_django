@@ -1,0 +1,24 @@
+{% extends 'panel_torneo/base.html' %}
+
+{% block titulo%} Lista de Jugadores {% endblock %}
+
+{% block contenido %}
+
+{% block buscar %} {% endblock %}
+
+<ul>
+
+{% for jugador in object_list %}
+    <li>{{jugador}}
+        <a href="{% url 'jugadores-actualizar' jugador.id %}">Actualizar</a> 
+        <a href="{% url 'jugadores-borrar' jugador.id %}">Borrar</a> 
+    </li>
+{% endfor %}
+
+</ul>
+
+<form action="{% url 'inicio' %}">
+    <button class="btn btn-danger btn-lg">Volver</button>
+</form>
+
+{% endblock %}
