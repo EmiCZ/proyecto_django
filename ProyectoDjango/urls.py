@@ -13,6 +13,8 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf import settings
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include #Esto se usa para rutear a otro url.py
 from AppCoder.forms import FamiliarForm
@@ -32,7 +34,7 @@ urlpatterns = [
     path("template2/<nombre>/<apellido>", template_con_variables),
     path("template3/", template_con_listas),
     path("familiares/", mostrar_familiares),
-    path("blog/", blog_index),
+    path('blog/', include('blog.urls')),
     path("familiares/buscar", BuscarFamiliar.as_view()),
     path("familiares/crear", CrearFamiliar.as_view()),
     path("familiares/borrar", BorrarFamiliar.as_view()),
@@ -40,3 +42,5 @@ urlpatterns = [
     path("panel-familia/", include('panel_familia.urls')), #en el include pongo el nombre de la aplicación y le agrego .urls
     path("panel-torneo/", include('panel_torneo.urls')),
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

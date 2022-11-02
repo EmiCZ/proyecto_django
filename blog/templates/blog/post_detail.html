@@ -1,0 +1,21 @@
+{% load static %} <!--Esto sirve para poder cargar una imagen statis para eso en el src uso static 'blog/assets/xxx.jpg' entre doble ¨{"-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>{{object.title}}</h1>
+    <h2>{{object.short_content}}</h2>
+    <!--{{object}} Si uso esto es para que me traiga todo el contenido segun este definido el __str__ en la clase en models.py-->
+</br>
+    <img height="255" src="{{ object.image.url }}"/>
+<p>{{object.content}}</p>
+
+<a href="{% url 'list-post' %}">Volver a la lista de post</a>
+
+</body>
+</html>
