@@ -11,15 +11,17 @@ from django.views.generic import ListView, CreateView, DeleteView, UpdateView, D
 from blog.models import Post
 
 
-@login_required
+
 def index(request):
     configuracion = Configuracion.objects.first()
-    return render(request, "blog/index.html", {'configuracion': configuracion})
+    posts = Post.objects.order_by('-date_published').all()
+    return render(request, "blog/index.html", {'configuracion': configuracion, "posts": posts})
+    #return render(request, "blog/index.html",{"posts": posts})
 
-class ListPost(LoginRequiredMixin, ListView): #el login required tiene que ir primero
+class ListPost(ListView):
     model=Post
 
-class CreatePost(CreateView):
+class CreatePost(LoginRequiredMixin,CreateView): #el login required tiene que ir primero, esto me sirve para que me pida un Login si quiero ver una funcionalidad
     model=Post
     fields = ['title', 'short_content', 'content', 'image']
     success_url = reverse_lazy("list-post")
@@ -27,12 +29,12 @@ class CreatePost(CreateView):
 class DetailPost(DetailView):
     model=Post
 
-class UpdatePost(UpdateView):
+class UpdatePost(LoginRequiredMixin,UpdateView): #el login required tiene que ir primero, esto me sirve para que me pida un Login si quiero ver una funcionalidad
     model=Post
     fields=['title', 'short_content', 'content', 'image']
     success_url = reverse_lazy("list-post")
 
-class DeletePost(DeleteView):
+class DeletePost(LoginRequiredMixin,DeleteView): #el login required tiene que ir primero, esto me sirve para que me pida un Login si quiero ver una funcionalidad
     model=Post
     success_url = reverse_lazy("list-post")
 
@@ -55,5 +57,5 @@ class BlogSignUp(CreateView):
 
 class ProfileUpdate(UpdateView):
     model = User
-    fields = ['username']
+    fields = ['username', 'first_name', 'last_name', 'email']
     success_url = reverse_lazy("blog-login")

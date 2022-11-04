@@ -17,4 +17,4 @@ class Post(models.Model):
     image = models.ImageField(upload_to="posts", null=True, blank=True)
 
     def __str__(self):
-        return f"id:{self.id}, title:{self.title}"
+        return f"id:{self.id}, title:{self.title}, date_published:{self.date_published}"
